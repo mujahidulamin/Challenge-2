@@ -14,7 +14,7 @@ import {
 import { Button } from './ui/button';
 import { IProduct } from '@/types/globalTypes';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
-import { addToCart } from '@/redux/features/cart/cartSlice';
+import { addToCart, removeFromCart, removeOneFromCart } from '@/redux/features/cart/cartSlice';
 
 export default function Cart() {
 
@@ -65,10 +65,11 @@ export default function Cart() {
                 <Button onClick={() => {dispatch(addToCart(product))}}>
                   <HiOutlinePlus size="20" />
                 </Button>
-                <Button>
+                <Button   onClick={() => {dispatch(removeOneFromCart(product))}}>
                   <HiMinus size="20" />
                 </Button>
                 <Button
+                onClick={() => {dispatch(removeFromCart(product))}}
                   variant="destructive"
                   className="bg-red-500 hover:bg-red-400"
                 >
